@@ -6,17 +6,29 @@ export default function PatientDatabase() {
 const [patientCards, setpatientCards] = useState([]);
 const [selectDoc, setselectDoc] = useState([])
 
+
   useEffect(() => {
     setpatientCards("Loading ...");
     const fetchData = async () => {
       const data = await Axios.get(
         `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/patients`
       );
-      console.log("Hello from data", data);
+      console.log("Hello from Patient data", data);
       setpatientCards(data.data);
     };
     fetchData()  
   
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await Axios.get(
+        `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/doctors`
+      );
+      console.log("Hello from Doctor data", data);
+      setselectDoc(data.data);
+    };
+    fetchData()  
   }, []);
 
   if (patientCards === "Loading ...") {
@@ -27,11 +39,11 @@ const [selectDoc, setselectDoc] = useState([])
   return (
     <div>
       <h1>Patient Database</h1>
+      <label>Doctor:</label>{" "}<select onChange={(e) => setselectDoc(e.target.value)}>
       
-      <label>Doctor:{" "}<select onChange={(e) => setselectDoc(e.target.value)}>
-          <option value="selectDoc"></option>
-          </select>
-          </label>
+          
+      {selectDoc.map(Doc => {
+      return <option value="selectDoc">{Doc.doctor}</option>})}</select>
 
            {patientCards.map(Patient => {
         return <ul align="left" className="sub-menu" type="none" key={Patient.id}>
@@ -39,7 +51,7 @@ const [selectDoc, setselectDoc] = useState([])
         <li> ID:{Patient.id} </li>
         <li>Date of Birth:{Patient.dateOfBirth}</li><Button name="Show details"/></ul>
           
-          console.log("Hello from mapping", Patient)
+        //   console.log("Hello from mapping", Patient)
         
            })}
  
