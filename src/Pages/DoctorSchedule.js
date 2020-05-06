@@ -6,7 +6,9 @@ import Table from '../Components/Table';
 export default function Navbar() {
 const [DocsonDuty, setDocsonDuty] = useState([]);
 
+
   useEffect(() => {
+    setDocsonDuty("Loading ...");
     const fetchData = async () => {
       const data = await Axios.get(
         `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/doctors`
@@ -14,21 +16,28 @@ const [DocsonDuty, setDocsonDuty] = useState([]);
       console.log("Hello from data", data);
       setDocsonDuty(data.data);
     };
-    fetchData()   
+    fetchData()  
+  
   }, []);
-  console.log("hello from useState", DocsonDuty)
+
+  if (DocsonDuty === "Loading ...") {
+    return <h1>Loading...</h1>;} 
+  
+    console.log("hello from useState", DocsonDuty)
 
   return (
     <div>
       <h1>Who is on duty?</h1>
       <table>
+          <tbody>
           <tr>
             <th>Doctor</th>
             <th>Availability</th>
           </tr>
           {DocsonDuty.map(Doctor => (
-            <Table Doctor={Doctor.doctor} Availability={Doctor.onDuty}/>
+            <Table key={Doctor.id} Doctor={Doctor.doctor} Availability={Doctor.onDuty}/>
           ))}
+          </tbody>
       </table>
 
       <Contact />
