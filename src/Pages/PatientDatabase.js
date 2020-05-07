@@ -15,27 +15,12 @@ export default function PatientDatabase() {
 
       const fetchData = async () => {
         const data = await Axios.get(
-          `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/patients`
+          `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/db`
         );
-        console.log("Hello from Patient data", data);
+        console.log("Hello from data", data);
 
-        setpatientCards(data.data);
-      };
-
-      fetchData()  
-    }, 
-    []
-  );
-
-  useEffect(
-    () => {
-      const fetchData = async () => {
-        const data = await Axios.get(
-          `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/doctors`
-        );
-        console.log("Hello from Doctor data", data);
-
-        setselectDoc(data.data);
+        setpatientCards(data.data.patients);
+        setselectDoc(data.data.doctors);
       };
 
       fetchData()  

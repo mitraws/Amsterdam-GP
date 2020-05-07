@@ -6,9 +6,10 @@ export default function Navbar() {
   return (
     <div>
       <h1>Welcome to AMS GPs</h1>
-      <p>
+      
         {" "}
         <Contact />
+      <p>
         <Link to="/DoctorSchedule">
           <button>Who is on duty?</button>
         </Link>
