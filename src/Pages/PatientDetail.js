@@ -47,13 +47,12 @@ export default function () {
         <br></br>
         <p>Contact details:</p>
         <li>E-mail: {patientCards.email}</li>
-        <li>Phone number: {patientCards.phoneNumber}</li></ul>
-        <p>Prescriptions:</p>
-        {preScrip.map(() => (
-            <li>
-            {preScrip}
+        <li>Phone number: {patientCards.phoneNumber}</li>
+        <p>Prescriptions:</p></ul>
+        {preScrip.map((prescrips, index) => <li align="left" key={index}>
+            {prescrips}
             </li>
-        ))} 
+        )} 
 
     </div>
 }
