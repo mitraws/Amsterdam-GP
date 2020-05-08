@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import PatientCard from '../Components/PatientCard';
 import Axios from 'axios';
 import { useParams } from "react-router-dom";
 
@@ -18,8 +17,11 @@ export default function () {
             const fetchData = async (id) => {
             console.log("Hello from useEffect, id?", id)
             const data = await Axios.get(
-                `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/patients/${id}`
+                `http://localhost:4000/patients/${id}`
             );
+            // const data = await Axios.get(
+            //     `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/patients/${id}`
+            // );
             console.log("Hello from Patient data", data);
 
             setpatientCards(data.data);
@@ -49,9 +51,9 @@ export default function () {
         <li>E-mail: {patientCards.email}</li>
         <li>Phone number: {patientCards.phoneNumber}</li></ul>
         <p>Prescriptions:</p>
-        {preScrip.map(() => (
-            <li>
-            {preScrip}
+        {preScrip.map((preScriptItem) => (
+            <li key={preScriptItem} align="left">
+            {preScriptItem}
             </li>
         ))} 
 

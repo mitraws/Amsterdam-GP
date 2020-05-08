@@ -14,9 +14,13 @@ export default function PatientDatabase() {
       setpatientCards("Loading ...");
 
       const fetchData = async () => {
-        const data = await Axios.get(
-          `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/db`
-        );
+      const data = await Axios.get(
+        'http://localhost:4000/patients'
+      )  
+        // const data = await Axios.get(
+        //   `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/db`
+        // );
+
         console.log("Hello from data", data);
 
         setpatientCards(data.data.patients);

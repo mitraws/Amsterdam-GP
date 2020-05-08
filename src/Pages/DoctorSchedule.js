@@ -11,8 +11,11 @@ const [DocsonDuty, setDocsonDuty] = useState([]);
     setDocsonDuty("Loading ...");
     const fetchData = async () => {
       const data = await Axios.get(
-        `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/doctors`
+        `http://localhost:4000/doctors`
       );
+      // const data = await Axios.get(
+      //   `https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/doctors`
+      // );
       console.log("Hello from data", data);
       setDocsonDuty(data.data);
     };
