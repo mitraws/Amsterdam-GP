@@ -11,9 +11,10 @@ import PatientDetail from "./Pages/PatientDetail";
 
 function App() {
   return (
-    <div className="App">
+    <div align="center">
       <Navbar />
-      <header className="App-header">
+      <hr></hr>
+      {/* <header className="App-header"> */}
         <Switch>
           <Route path="/DoctorSchedule" component={DoctorSchedule} />
           <Route path="/PatientSignup" component={PatientSignup} />
@@ -21,7 +22,7 @@ function App() {
           <Route path="/PatientDetail/:id" component={PatientDetail} />
           <Route exact path="/" component={Home} />
         </Switch>
-      </header>
+      {/* </header> */}
     </div>
   );
 }

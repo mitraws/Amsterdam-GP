@@ -10,7 +10,7 @@ export default function Contact() {
     }
   return (
     <div>
-      <p>We are: {time}</p>
+      <p>We are: <b>{time}</b></p>
       <p>To make an appointment</p>
       <p>call: 020 555 5555</p>
     </div>

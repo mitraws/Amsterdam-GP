@@ -32,14 +32,16 @@ const [DocsonDuty, setDocsonDuty] = useState([]);
     <div>
       <h1>Who is on duty?</h1>
       <table>
+          <thead>
+            <tr>
+              <th>Doctor</th>
+              <th>Availability</th>
+            </tr>
+          </thead>
           <tbody>
-          <tr>
-            <th>Doctor</th>
-            <th>Availability</th>
-          </tr>
-          {DocsonDuty.map(Doctor => (
-            <Table key={Doctor.id} Doctor={Doctor.doctor} Availability={Doctor.onDuty}/>
-          ))}
+            {DocsonDuty.map(Doctor => (
+              <Table key={Doctor.id} Doctor={Doctor.doctor} Availability={Doctor.onDuty}/>
+            ))}
           </tbody>
       </table>
 
